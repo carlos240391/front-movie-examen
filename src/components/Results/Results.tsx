@@ -1,6 +1,6 @@
 import CardMovie from '@components/CardMovie/CardMovie';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Badge, Col, Row } from 'react-bootstrap';
 import { IMovie } from 'src/models/MovieModels';
 
 interface IPropsResults {
@@ -13,9 +13,18 @@ const Results = (props: IPropsResults) => {
 
   return (
     <>
-      <Row>
-        <Col>Resultados de: {query}</Col>
-        <Col>Filtros repidos</Col>
+      <Row style={{ margin: '20px 0px' }}>
+        <Col xs={12} md={6}>
+          <h1> Resultados de: {query}</h1>
+        </Col>
+        {/* <Col xs={12} md={6}>
+          <Badge pill bg="success" style={{ fontSize: '1rem', margin: '0px 5px' }}>
+            Drama
+          </Badge>
+          <Badge pill bg="success" style={{ fontSize: '1rem', margin: '0px 5px' }}>
+            Acción
+          </Badge>
+        </Col> */}
       </Row>
       <Row>
         {movies.length ? (

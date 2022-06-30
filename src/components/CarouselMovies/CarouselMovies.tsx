@@ -20,10 +20,16 @@ const CarouselMovies = (props: IPropsCarouselMovies) => {
     infinite: true,
     autoplay: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
       {
         breakpoint: 1080,
         settings: {
