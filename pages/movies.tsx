@@ -2,9 +2,14 @@ import Results from '@components/Results/Results';
 import Search from '@components/Search/Search';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import React from 'react';
+import { useEffect } from 'react';
 
 const Movies: NextPage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { query } = props;
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
 
   return (
     <>

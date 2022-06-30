@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 const Search = () => {
+  const router = useRouter();
   const onSubmit = (e: any) => {
     e.preventDefault();
-    alert('haciendo busqueda');
+    // alert('haciendo busqueda');
+    router.push({ pathname: '/movies', query: { search: 'alguna busqueda' } });
   };
   return (
     <motion.div
