@@ -1,9 +1,10 @@
 import CardMovie from '@components/CardMovie/CardMovie';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { IMovie } from 'src/models/MovieModels';
 
 interface IPropsResults {
-  movies: any[];
+  movies: IMovie[];
   query: string;
 }
 
@@ -21,7 +22,7 @@ const Results = (props: IPropsResults) => {
           movies.map((movie, key) => {
             return (
               <Col xs={6} md={4} lg={2} style={{ margin: '10px 0px' }} key={key}>
-                <CardMovie />
+                <CardMovie movie={movie} />
               </Col>
             );
           })

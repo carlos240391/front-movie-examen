@@ -1,10 +1,35 @@
 import CarouselMovies from '@components/CarouselMovies/CarouselMovies';
-import React from 'react';
+import CarouselMoviesSkeleton from '@components/Skeletons/CarouselMoviesSkeleton';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { IMovie } from 'src/models/MovieModels';
+import { GetMethod } from 'src/services/request';
 
 const FantasyMovies = () => {
+  const [movies, setMovies] = useState<IMovie[]>([]);
+  const [load, setload] = useState<boolean>(false);
+
+  const peticion = async () => {
+    setload(true);
+    const result = await GetMethod(`/movies`);
+    if (result.ok) {
+      setMovies(result.response);
+      setload(false);
+      return;
+    }
+    setload(false);
+  };
+
+  useEffect(() => {
+    peticion();
+  }, []);
+
+  if (load) {
+    return <CarouselMoviesSkeleton />;
+  }
   return (
     <>
-      <CarouselMovies title="Películas de fantasia" movies={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
+      <CarouselMovies title="Películas de fantasia" movies={movies} />
     </>
   );
 };

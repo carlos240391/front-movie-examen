@@ -1,22 +1,27 @@
 import React from 'react';
 import { Badge, Button, Card } from 'react-bootstrap';
+import { IMovie } from 'src/models/MovieModels';
 
-const CardMovie = () => {
+interface IPropsCardMovie {
+  movie: IMovie;
+}
+
+const CardMovie = (props: IPropsCardMovie) => {
+  const {
+    movie: { movieName, poster, genero, duracion },
+  } = props;
+
   return (
     <Card>
-      <Card.Img
-        style={{ borderRadius: '3px' }}
-        variant="bottom"
-        src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/7UGmn8TyWPPzkjhLUW58cOUHjPS.jpg"
-      />
-      <Card.Body>
-        <Card.Title style={{ textAlign: 'center' }}>Card Title proof large title</Card.Title>
+      <Card.Img style={{ borderRadius: '3px' }} variant="bottom" src={poster} />
+      <Card.Body style={{ textAlign: 'center' }}>
+        <Card.Title style={{ textAlign: 'center' }}>{movieName}</Card.Title>
 
         <Button variant="link">Rentar Pelicula</Button>
       </Card.Body>
       <Card.Header>
         <Card.Text>
-          <Badge bg="warning">Genero</Badge> 2hrs.
+          <Badge bg="warning">{genero}</Badge> {duracion}
         </Card.Text>
       </Card.Header>
     </Card>

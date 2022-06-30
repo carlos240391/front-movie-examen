@@ -3,9 +3,11 @@ import React from 'react';
 import { useRef } from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import Slider from 'react-slick';
+import { IMovie } from 'src/models/MovieModels';
 import { SectionMultiCarousel, ItemMultiCarouselEnvolve, MultiCarousel } from './CarouselMoviesStyles';
+
 interface IPropsCarouselMovies {
-  movies: any[];
+  movies: IMovie[];
   title: string;
 }
 const CarouselMovies = (props: IPropsCarouselMovies) => {
@@ -18,20 +20,26 @@ const CarouselMovies = (props: IPropsCarouselMovies) => {
     infinite: true,
     autoplay: false,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
       {
+        breakpoint: 1080,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
         },
       },
       {
@@ -77,7 +85,7 @@ const CarouselMovies = (props: IPropsCarouselMovies) => {
           return (
             <SectionMultiCarousel key={i}>
               <ItemMultiCarouselEnvolve>
-                <CardMovie />
+                <CardMovie movie={movie} />
               </ItemMultiCarouselEnvolve>
             </SectionMultiCarousel>
           );
