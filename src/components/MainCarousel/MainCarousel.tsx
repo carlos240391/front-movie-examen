@@ -34,45 +34,57 @@ const MainCarousel = () => {
   }
 
   return (
-    <motion.div
-      exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1.2 }}
-      transition={{ duration: 1.5 }}
-    >
-      <Carousel>
-        {movies.map((movie, i) => {
-          return (
-            <Carousel.Item key={i}>
-              <ItemCarouselAdjust>
-                <img className="carousel-image" src={movie.banner} alt="ITEM" />
-                <Carousel.Caption>
-                  <Container fluid={true}>
-                    <Row>
-                      <Col xs={12} sm={4} style={{ textAlign: 'center' }}>
-                        <img className="carousel-image-poster" src={movie.poster} />
-                      </Col>
-                      <Col xs={12} sm={8} className="col-caption">
-                        <h2>{movie.movieName}</h2>
-                        <h4>
-                          <Badge bg="warning">TOP: {i + 1}</Badge> <span>Genero: {movie.genero}</span>
-                        </h4>
-                        <MediaQuery query="(min-width:800px)">
-                          <p>{movie.sinopsis}</p>
-                        </MediaQuery>
-                        <Link href={`/movies/${movie._id}`}>
-                          <Button variant="primary">Rentar pelicula</Button>
-                        </Link>
-                      </Col>
-                    </Row>
-                  </Container>
-                </Carousel.Caption>
-              </ItemCarouselAdjust>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel>
-    </motion.div>
+    <>
+      <motion.div
+        style={{ height: '500px' }}
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1.2 }}
+        transition={{ duration: 1.5 }}
+      >
+        <section
+          style={{
+            width: '100%',
+            height: '500px',
+            position: 'absolute',
+            left: '0px',
+          }}
+        >
+          <Carousel>
+            {movies.map((movie, i) => {
+              return (
+                <Carousel.Item key={i}>
+                  <ItemCarouselAdjust>
+                    <img className="carousel-image" src={movie.banner} alt="ITEM" />
+                    <Carousel.Caption>
+                      <Container fluid={true}>
+                        <Row>
+                          <Col xs={12} sm={4} style={{ textAlign: 'center' }}>
+                            <img className="carousel-image-poster" src={movie.poster} />
+                          </Col>
+                          <Col xs={12} sm={8} className="col-caption">
+                            <h2>{movie.movieName}</h2>
+                            <h4>
+                              <Badge bg="warning">TOP: {i + 1}</Badge> <span>Genero: {movie.genero}</span>
+                            </h4>
+                            <MediaQuery query="(min-width:800px)">
+                              <p>{movie.sinopsis}</p>
+                            </MediaQuery>
+                            <Link href={`/movies/${movie._id}`}>
+                              <Button variant="primary">Rentar pelicula</Button>
+                            </Link>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </Carousel.Caption>
+                  </ItemCarouselAdjust>
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
+        </section>
+      </motion.div>
+    </>
   );
 };
 

@@ -1,27 +1,30 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { IMovie } from 'src/models/MovieModels';
+import { MainCustomBannerCaption, MainCustomBannerContainer } from './CustomMainBannerStyles';
 
-const CustomMainBanner = () => {
+interface IPropsCustomMainBanner {
+  movie: IMovie;
+}
+
+const CustomMainBanner = (props: IPropsCustomMainBanner) => {
+  const {
+    movie: { banner },
+  } = props;
   return (
     <>
-      <section
-        style={{
-          width: '100%',
-          height: '450px',
-          background: 'red',
-        }}
-      >
-        <section
-          style={{
-            width: '100vw',
-            height: '450px',
-            background: 'blue',
-            position: 'absolute',
-            left: '0px',
-          }}
-        >
-          Hola mundo
-        </section>
-      </section>
+      <MainCustomBannerContainer>
+        <MainCustomBannerCaption banner={banner}>
+          <Container fluid="lg">
+            <Row>
+              <Col xs={3}>1</Col>
+              <Col xs={3}>1</Col>
+              <Col xs={3}>1</Col>
+              <Col xs={3}>1</Col>
+            </Row>
+          </Container>
+        </MainCustomBannerCaption>
+      </MainCustomBannerContainer>
     </>
   );
 };
