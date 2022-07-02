@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row, Alert } from 'react-bootstrap';
@@ -24,14 +23,8 @@ const Search = () => {
     router.push({ pathname: '/movies', query: { search: searchparam } });
   };
   return (
-    <motion.div
-      style={{ margin: '50px 0px 50px 0px' }}
-      exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1.2 }}
-      transition={{ duration: 1.7 }}
-    >
-      <Row>
+    <>
+      <Row style={{ margin: '50px 0px 50px 0px' }}>
         <Col className="text-center">
           <h1>¿Que película estas buscando?</h1>
         </Col>
@@ -60,7 +53,7 @@ const Search = () => {
         </Col>
         <Col xs={12} sm={2}></Col>
       </Row>
-    </motion.div>
+    </>
   );
 };
 

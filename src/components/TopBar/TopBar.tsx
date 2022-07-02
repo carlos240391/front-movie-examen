@@ -8,11 +8,11 @@ import Link from 'next/link';
 const TopBar = () => {
   return (
     <motion.div
-      style={{ position: 'sticky', top: '0px', zIndex: '9999' }}
+      style={{ position: 'sticky', top: '0px', zIndex: '999' }}
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <Navbar bg="dark" variant="dark" sticky="top">
         <Container fluid="lg">

@@ -11,7 +11,7 @@ const FantasyMovies = () => {
 
   const peticion = async () => {
     setload(true);
-    const result = await GetMethod(`/movies`);
+    const result = await GetMethod(`/movies/category?category=fantasia`);
     if (result.ok) {
       setMovies(result.response);
       setload(false);

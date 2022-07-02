@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Carousel, Container, Row, Col, Button, Badge } from 'react-bootstrap';
 import { ItemCarouselAdjust } from './MainCarouselStyles';
-import { motion } from 'framer-motion';
+
 import MediaQuery from '@components/MediaQuery/MediaQuery';
 import { useEffect } from 'react';
 import { IMovie } from 'src/models/MovieModels';
@@ -35,13 +35,7 @@ const MainCarousel = () => {
 
   return (
     <>
-      <motion.div
-        style={{ height: '500px' }}
-        exit={{ opacity: 0 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1.2 }}
-        transition={{ duration: 1.5 }}
-      >
+      <div style={{ height: '500px' }}>
         <section
           style={{
             width: '100%',
@@ -83,7 +77,7 @@ const MainCarousel = () => {
             })}
           </Carousel>
         </section>
-      </motion.div>
+      </div>
     </>
   );
 };

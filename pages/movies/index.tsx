@@ -1,6 +1,7 @@
 import Results from '@components/Results/Results';
 import Search from '@components/Search/Search';
 import CarouselMoviesSkeleton from '@components/Skeletons/CarouselMoviesSkeleton';
+import { motion } from 'framer-motion';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
@@ -30,11 +31,18 @@ const Movies: NextPage = (props: InferGetServerSidePropsType<typeof getServerSid
 
   return (
     <>
-      <Head>
-        <title>Movie App | BUSQUEDA</title>
-      </Head>
-      <Search />
-      {load ? <CarouselMoviesSkeleton /> : <Results query={query} movies={movies} />}
+      <motion.div
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Head>
+          <title>Movie App | BUSQUEDA</title>
+        </Head>
+        <Search />
+        {load ? <CarouselMoviesSkeleton /> : <Results query={query} movies={movies} />}
+      </motion.div>
     </>
   );
 };

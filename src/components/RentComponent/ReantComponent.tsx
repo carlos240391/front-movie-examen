@@ -1,10 +1,10 @@
+import ModalAlert from '@components/ModalAlert/ModalAlert';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Button, FloatingLabel, Form, ListGroup } from 'react-bootstrap';
 import { IOrder } from 'src/models/OrderModel';
 import { IPlan } from 'src/models/PlansModels';
 import { GetMethod, PostMethod, PutMethod } from 'src/services/request';
-import { isKeyObject } from 'util/types';
 import { v4 as uuidv4 } from 'uuid';
 
 interface IPropsRentComponent {
@@ -20,6 +20,8 @@ const RentComponent = (props: IPropsRentComponent) => {
   const [load, setLoad] = useState<boolean>(true);
   const [plandescription, setPlanescription] = useState<string>('');
   const [loadpeticion, setLoadpeticion] = useState<boolean>(false);
+  const [showmodal, setShowmodal] = useState<boolean>(false);
+  const [showmodalsuccess, setShowmodalsuccess] = useState<boolean>(false);
   const [orden, setOrden] = useState<IOrder>({
     orden: '',
     movieId: '',
@@ -27,6 +29,13 @@ const RentComponent = (props: IPropsRentComponent) => {
     fechaInicio: '',
     email: '',
   });
+
+  const handleShowModal = (toggle: boolean) => {
+    setShowmodal(toggle);
+  };
+  const handleShowModalSuccess = (toggle: boolean) => {
+    setShowmodalsuccess(toggle);
+  };
 
   const peticion = async () => {
     setLoad(true);
@@ -82,10 +91,16 @@ const RentComponent = (props: IPropsRentComponent) => {
   const submit = async (e: any) => {
     e.preventDefault();
     setLoadpeticion(true);
+    if (!orden.email || !orden.plan) {
+      setShowmodal(true);
+      setLoadpeticion(false);
+      return;
+    }
     try {
       await postOrden();
       await putDemand();
       refreshPeticion();
+      setShowmodalsuccess(true);
       setLoadpeticion(false);
     } catch (err) {
       setLoadpeticion(false);
@@ -98,6 +113,22 @@ const RentComponent = (props: IPropsRentComponent) => {
 
   return (
     <>
+      <ModalAlert
+        show={showmodal}
+        handleShow={handleShowModal}
+        title="Algo salio mal"
+        body="Asegurate de llenar todos os campos"
+        button="Aceptar"
+        variant="warning"
+      />
+      <ModalAlert
+        show={showmodalsuccess}
+        handleShow={handleShowModalSuccess}
+        title="Orden realizada!"
+        body="En unos breves instantes te llegara a tu correo las indicaciones para que puedas disfrutar de tu pelicula"
+        button="Aceptar"
+        variant="success"
+      />
       <ListGroup>
         <ListGroup.Item variant="info">
           <h1>Rentar Película</h1>

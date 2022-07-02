@@ -1,7 +1,9 @@
 import BodyDescription from '@components/BodyDescription/BodyDescription';
 import CustomMainBanner from '@components/CustomMainBanner/CustomMainBanner';
 import RentComponent from '@components/RentComponent/ReantComponent';
+import CarouselMoviesSkeleton from '@components/Skeletons/CarouselMoviesSkeleton';
 import MainCarouselSkeleton from '@components/Skeletons/MainCarouselSkeleton';
+import { motion } from 'framer-motion';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -46,15 +48,22 @@ const EachMovie = (props: InferGetServerSidePropsType<typeof getServerSideProps>
 
   return (
     <>
-      <CustomMainBanner movie={movie as IMovie} />
-      <Row style={{ marginTop: '50px' }}>
-        <Col xs={12} sm={6} lg={8}>
-          <BodyDescription movie={movie as IMovie} />
-        </Col>
-        <Col xs={12} sm={6} lg={4}>
-          <RentComponent idMovie={id} demand={movie?.demand as number} refreshPeticion={refreshpeticion} />
-        </Col>
-      </Row>
+      <motion.div
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <CustomMainBanner movie={movie as IMovie} />
+        <Row style={{ marginTop: '50px' }}>
+          <Col xs={12} sm={6} lg={8}>
+            <BodyDescription movie={movie as IMovie} />
+          </Col>
+          <Col xs={12} sm={6} lg={4}>
+            <RentComponent idMovie={id} demand={movie?.demand as number} refreshPeticion={refreshpeticion} />
+          </Col>
+        </Row>
+      </motion.div>
     </>
   );
 };
