@@ -24,7 +24,7 @@ const Search = () => {
   };
   return (
     <>
-      <Row style={{ margin: '50px 0px 50px 0px' }}>
+      <Row style={{ margin: '50px 0px 0px 0px' }}>
         <Col className="text-center">
           <h1>¿Que película estas buscando?</h1>
         </Col>
@@ -33,7 +33,9 @@ const Search = () => {
         <Col xs={12} sm={2}></Col>
         <Col xs={12} sm={8} className="text-center">
           <Form onSubmit={onSubmit}>
-            <Form.Label>Inicia una busqueda por nombre o género y presiona enter. </Form.Label>
+            <Form.Label style={{ marginBottom: '15px' }}>
+              Inicia una busqueda por nombre o género y presiona enter.{' '}
+            </Form.Label>
             <Form.Control
               type="text"
               placeholder="Buscar películas por nombre o género"
