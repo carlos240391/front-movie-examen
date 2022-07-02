@@ -29,4 +29,31 @@ export const MainCustomBannerCaption = styled.section<IMainCustomBannerCaption>`
     opacity: 0.8;
     z-index: -100 !important;
   }
+
+  .MainCustomBannerCaption__container {
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-box {
+      width: 100%;
+      max-width: 800px;
+      height: 350px;
+      &-img {
+        width: 100%;
+        max-width: 200px;
+        border-radius: 10px;
+        @media (max-width: 577px) {
+          max-width: 120px;
+        }
+      }
+      &-caption {
+        color: white;
+        @media (max-width: 577px) {
+          text-align: center;
+        }
+      }
+    }
+  }
 `;

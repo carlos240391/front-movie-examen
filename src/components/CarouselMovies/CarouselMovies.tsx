@@ -18,7 +18,6 @@ const CarouselMovies = (props: IPropsCarouselMovies) => {
   const settings = {
     dots: false,
     infinite: true,
-    autoplay: false,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,

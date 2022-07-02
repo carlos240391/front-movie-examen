@@ -13,19 +13,19 @@ const CardMovie = (props: IPropsCardMovie) => {
   } = props;
 
   return (
-    <Card>
+    <Card border="light">
       <Card.Img style={{ borderRadius: '3px' }} variant="bottom" src={poster} />
+      <Card.Header>
+        <Card.Text style={{ textAlign: 'center' }}>
+          <Badge bg="info">{genero}</Badge>
+        </Card.Text>
+      </Card.Header>
       <Card.Body style={{ textAlign: 'center' }}>
         <Card.Title style={{ textAlign: 'center' }}>{movieName}</Card.Title>
         <Link href={`/movies/${_id}`}>
           <Button variant="link">Rentar Pelicula</Button>
         </Link>
       </Card.Body>
-      <Card.Header>
-        <Card.Text>
-          <Badge bg="warning">{genero}</Badge> {duracion}
-        </Card.Text>
-      </Card.Header>
     </Card>
   );
 };

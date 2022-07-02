@@ -12,9 +12,19 @@ const Layout = (props: IPropsLayout) => {
 
   return (
     <>
-      <TopBar />
-      <Container fluid="lg">{children}</Container>
-      <Footer />
+      <section
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <TopBar />
+        <Container fluid="lg" style={{ flexGrow: '1' }}>
+          {children}
+        </Container>
+        <Footer />
+      </section>
     </>
   );
 };
